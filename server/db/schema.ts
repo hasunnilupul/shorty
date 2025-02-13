@@ -11,7 +11,7 @@ export const urls = pgTable(
   "urls",
   {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    shortCode: varchar("short_code", { length: 6 }).notNull(),
+    shortCode: varchar("short_code", { length: 6 }).unique().notNull(),
     longUrl: varchar("long_url", { length: 256 }).notNull(),
     clicks: integer("clicks").default(0).notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
@@ -22,6 +22,6 @@ export const urls = pgTable(
     ),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.shortCode),
+    nameIndex: index("shortCode_idx").on(example.shortCode),
   })
 );

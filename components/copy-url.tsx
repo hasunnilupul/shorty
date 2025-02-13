@@ -1,6 +1,12 @@
+import { UrlData } from "@/utils/types";
+import { headers } from "next/headers";
 import Link from "next/link";
+import CopyToClipboard from "@/components/copy-to-clipboard";
 
-export default function CopyUrl() {
+export default async function CopyUrl({ data }: { data: UrlData }) {
+  const header = await headers();
+  const shortUrl = `http://${header.get("host")}/${data.shortCode}`;
+
   return (
     <section className="flex flex-col items-start justify-center w-full md:max-w-screen-sm">
       <div className="flex-col items-start">
@@ -23,26 +29,22 @@ export default function CopyUrl() {
               id="link"
               name="link"
               type="url"
+              defaultValue={shortUrl}
               className="flex-grow block h-full min-w-0 rounded-l-md py-1.5 pl-1.5 sm:pl-3 text-sm/6 sm:text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-800"
             />
             <div className="shrink-0 flex h-full focus-within:relative">
-              <button
-                type="button"
-                className="block px-1.5 sm:px-3 bg-sky-600 text-white text-base sm:text-lg font-medium rounded-r-md"
-              >
-                Copy URL
-              </button>
+              <CopyToClipboard url={shortUrl} />
             </div>
           </div>
 
           <p className="mt-3 w-fit text-xs sm:text-sm font-medium text-gray-900 sm:max-w-lg">
             <span className="mr-1">Long URL:</span>
             <a
-              href="long-url"
+              href={data.longUrl}
               target="_blank"
               className="text-sky-500 hover:underline text-wrap"
             >
-              long-url
+              {data.longUrl}
             </a>
           </p>
 

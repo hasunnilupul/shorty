@@ -15,6 +15,6 @@ export async function shortenUrl(formData: FormData): Promise<never> {
   const longUrl = link.toString();
   const shortCode = nanoid(6);
 
-  const insertedShortCode = await insertShortenedUrl({ shortCode, longUrl });
-  redirect(`/${insertedShortCode}`);
+  const urlData = await insertShortenedUrl({ shortCode, longUrl });
+  redirect(`/shortener?code=${urlData.shortCode}`);
 }
