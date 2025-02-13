@@ -3,9 +3,9 @@ import { findUrlByShortCode } from "@/server/queries";
 import { NextResponse } from "next/server";
 
 interface RouteContext {
-  params: {
+  params: Promise<{
     shortCode?: string;
-  };
+  }>;
 }
 
 /** 
