@@ -1,3 +1,5 @@
+import { shortenUrl } from "@/server/actions";
+
 export default function PasteUrl() {
   return (
     <section className="flex flex-col items-center justify-start w-full sm:max-w-screen-sm md:max-w-screen-md py-2 px-3 sm:py-4 sm:px-8 bg-white rounded-md shadow">
@@ -5,7 +7,7 @@ export default function PasteUrl() {
         Paste the URL to be shortened
       </h3>
 
-      <form action={"/shortener"} className="w-full">
+      <form action={shortenUrl} className="w-full">
         <div className="mt-5">
           <label htmlFor="link" className="sr-only">
             Link
