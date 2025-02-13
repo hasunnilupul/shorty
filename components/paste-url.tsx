@@ -5,12 +5,12 @@ export default function PasteUrl() {
         Paste the URL to be shortened
       </h3>
 
-      <form action={"post"} className="w-full">
+      <form action={"/shortener"} className="w-full">
         <div className="mt-5">
           <label htmlFor="link" className="sr-only">
             Link
           </label>
-          <div className="flex items-center rounded-md bg-white h-14 outline outline-1 -outline-offset-1 outline-gray-300">
+          <div className="flex items-center rounded-md bg-white h-10 sm:h-14 outline outline-1 -outline-offset-1 outline-gray-300">
             <input
               id="link"
               name="link"

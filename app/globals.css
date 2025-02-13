@@ -12,3 +12,8 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
